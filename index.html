@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mario Bross</title>
+    <style>
+      body {
+        background-image: url("images/background.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .cssBross {
+        width: 150px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+    </style>
+    <script>
+      var beginMoveMario;
+      var posX = 0;
+      var posY = 0;
+      var countmario = 0;
+      function startMoveMario() {
+        beginMoveMario = setInterval(moveMario, 100);
+      }
+
+      function moveMario() {
+        //X = 350 hasta 490
+        //Y = 390 hasta 560
+        posX = Math.round(Math.random() * 1000);
+        posY = Math.round(Math.random() * 1000);
+
+        var mario = document.getElementById("mario");
+
+        mario.style.left = posX + "px";
+        mario.style.top = posY + "px";
+        countmario += 1;
+
+        if (posX >= 350 && posX <= 490 && posY >= 390 && posY <= 560) {
+          clearInterval(beginMoveMario);
+          alert(`ganaste en la juguada ${countmario}`);
+          countmario = 0;
+        }
+        if (posX >= 480 && posX <= 600 && posY >= 150 && posY <= 230) {
+          clearInterval(beginMoveMario);
+          alert(`ganaste en la juguada ${countmario}`);
+          countmario = 0;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <div>
+        <img
+          onclick="startMoveMario()"
+          src="images/mario.png"
+          alt=""
+          id="mario"
+          class="cssBross"
+        />
+      </div>
+    </div>
+  </body>
+</html>
